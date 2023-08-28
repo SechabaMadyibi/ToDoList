@@ -1,5 +1,9 @@
 import React from "react";
-import TodoList from "./TodoList";
+import TodoList from "./todoList";
+
+// define the following object properties within the constructor
+// inputData – This state property will hold the todo input value 
+// todoItems – This state property will store todo items in an array formate
 
 class TodoApp extends React.Component {
   constructor(){
@@ -9,9 +13,15 @@ class TodoApp extends React.Component {
       todoItems:[]
     }
   }
+
+  // changeTodoInput – This method will execute you start typing into the input field
+  // and will update the existing value.
+  
   changeTodoInput = (event) =>{
     this.setState({inputData:event.target.value})
   }
+
+  // This method will execute while you click the add button and will update the todoItems 
 
   addTodo = (event) =>{
     if(this.state.inputData!==''){
@@ -20,6 +30,8 @@ class TodoApp extends React.Component {
     }
   }
 
+ //This will execute while you click the cross (x) button and will remove items from the todoItems based on
+//the passing index as an argument from this method.
   deleteTodo =(index) =>{
     let todoItems=[...this.state.todoItems];
     let newTodoItems=todoItems.filter((value, key)=>{
